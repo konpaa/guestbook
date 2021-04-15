@@ -38,7 +38,7 @@ class Comment
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Conference::class, inversedBy="сcomments")
+     * @ORM\ManyToOne(targetEntity=Conference::class, inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $conference;
@@ -47,6 +47,11 @@ class Comment
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $photoFilename;
+
+    public function __toString(): string
+    {
+        return (string) $this->getEmail();
+    }
 
     public function getId(): ?int
     {
@@ -125,3 +130,4 @@ class Comment
         return $this;
     }
 }
+
