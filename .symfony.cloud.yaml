@@ -10,12 +10,6 @@ runtime:
         - sodium
         - ctype
         - iconv
-        
-
-#variables:
-#    php:
-#        # uncomment on PHP 7.4+
-#        #opcache.preload: /app/config/preload.php
 
 build:
     flavor: none
@@ -42,7 +36,7 @@ hooks:
         set -x -e
 
         curl -fs https://get.symfony.com/cloud/configurator | (>&2 bash)
-        
+
         (>&2 symfony-build)
 
     deploy: |
