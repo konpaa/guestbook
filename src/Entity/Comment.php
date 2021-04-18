@@ -144,4 +144,3 @@ class Comment
         return $this;
     }
 }
-

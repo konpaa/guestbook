@@ -8,3 +8,7 @@ tests:
 	symfony console doctrine:fixtures:load -n
 	symfony php bin/phpunit $@
 .PHONY: tests
+
+lint:
+	composer phpcs src
+	composer phpcs tests

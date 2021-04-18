@@ -9,7 +9,6 @@ use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\MockResponse;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
-
 class SpamCheckerTest extends TestCase
 {
     public function testSpamScoreWithInvalidRequest()
@@ -18,7 +17,10 @@ class SpamCheckerTest extends TestCase
         $comment->setCreatedAtValue();
         $context = [];
 
-        $client = new MockHttpClient([new MockResponse('invalid', ['response_headers' => ['x-akismet-debug-help: Invalid key']])]);
+        $client = new MockHttpClient([new MockResponse(
+            'invalid',
+            ['response_headers' => ['x-akismet-debug-help: Invalid key']]
+        )]);
         $checker = new SpamChecker($client, 'abcde');
 
         $this->expectException(\RuntimeException::class);

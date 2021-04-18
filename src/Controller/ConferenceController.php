@@ -36,8 +36,13 @@ class ConferenceController extends AbstractController
     }
 
     #[Route('/conference/{slug}', name: 'conference')]
-    public function show(Request $request, Conference $conference, CommentRepository $commentRepository, SpamChecker $spamChecker, string $photoDir): Response
-    {
+    public function show(
+        Request $request,
+        Conference $conference,
+        CommentRepository $commentRepository,
+        SpamChecker $spamChecker,
+        string $photoDir
+    ): Response {
         $comment = new Comment();
         $form = $this->createForm(CommentFormType::class, $comment);
         $form->handleRequest($request);
@@ -82,4 +87,3 @@ class ConferenceController extends AbstractController
         ]));
     }
 }
-
